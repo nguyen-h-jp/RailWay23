@@ -121,9 +121,9 @@ SELECT
 FROM
     question;
 SET foreign_key_checks = 0;
-delete
-from question
-where content LIKE 'câu hỏi%';
+DELETE
+FROM question
+WHERE content LIKE 'câu hỏi%';
 SET foreign_key_checks = 1;
 
 -- 14. update thông tin của account_id = 5 thành tên "Nguyễn Bá Lộc" và email thành loc.nguyenba@vti.com.vn
