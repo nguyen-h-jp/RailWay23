@@ -1,77 +1,78 @@
-CREATE DATABASE Testing_System_Assignment_1;
-USE Testing_System_Assignment_1;
+DROP DATABASE IF EXISTS testing_system;
+CREATE DATABASE testing_system;
+USE testing_system;
 
-CREATE TABLE Department (
-    DepartmentID 	INT,
-    DepartmentName 	VARCHAR(50)
+CREATE TABLE department(
+    department_id 	INT,
+    department_name VARCHAR(50)
 );
 
-CREATE TABLE Position (
-    PositionID 		INT,
-    PositionName 	VARCHAR(50)
+CREATE TABLE `position`(
+    position_id 	INT,
+    position_name 	VARCHAR(50)
 );
 
-CREATE TABLE Account (
-    AccountID 		INT,
-    AccountName		VARCHAR(50),
-    Username 		VARCHAR(50),
-    FullName 		VARCHAR(50),
-    DepartmentID 	INT,
-    PositionID 		INT,
-    CreateDate 		DATE
+CREATE TABLE `account`(
+    account_id 		INT,
+    account_name	VARCHAR(50),
+    username 		VARCHAR(50),
+    full_name 		VARCHAR(50),
+    department_id 	INT,
+    position_id 	INT,
+    create_date 	DATE
 );
 
-CREATE TABLE `Group` (
-    GroupID 	INT,
-    GroupName 	VARCHAR(50),
-    CreatorID 	INT,
-    CreateDate 	DATE
+CREATE TABLE `group`(
+    group_id 	INT,
+    group_name 	VARCHAR(50),
+    creator_id 	INT,
+    create_date DATE
 );
 
-CREATE TABLE GroupAccount (
-    GroupID 	INT,
-    AccountID 	INT,
-    JoinDate 	DATE
+CREATE TABLE group_account(
+    group_id 	INT,
+	account_id 	INT,
+    join_date 	DATE
 );
 
-CREATE TABLE TypeQuestion (
-    TypeID 		INT,
-    TypeName 	VARCHAR(50)
+CREATE TABLE type_question(
+    type_id 	INT,
+    type_name 	VARCHAR(50)
 );
 
-CREATE TABLE CategoryQuestion (
-    CategoryID 		INT,
-    CategoryName 	VARCHAR(50)
+CREATE TABLE category_question(
+    category_id 	INT,
+    category_name 	VARCHAR(50)
 );
 
-CREATE TABLE Question (
-    QuestionID 	INT,
-    Content 	VARCHAR(500),
-    CategoryID 	INT,
-    TypeID 		INT,
-    CreatorID 	INT,
-    CreateDate 	DATE
+CREATE TABLE question(
+    question_id 	INT,
+    content 		VARCHAR(500),
+    category_id 	INT,
+    type_id 		INT,
+    creator_id 		INT,
+    create_date 	DATE
 );
 
-CREATE TABLE Answer (
-    AnswerID 	INT,
-    Content 	VARCHAR(1000),
-    QuestionID 	INT,
-    isCorrect 	BOOLEAN
+CREATE TABLE answer(
+    answer_id 		INT,
+    content 		VARCHAR(1000),
+    question_id 	INT,
+    is_correct 		BOOLEAN -- ENUM('YES', 'NO'); boolean 1 or 0
 );
 
-CREATE TABLE Exam (
-    ExamID 		INT,
-    Code 		VARCHAR(50),
-    Title 		VARCHAR(100),
-    CategoryID 	INT,
-    Duration 	DATETIME,
-    CreatorID 	INT,
-    CreateDate	DATE
+CREATE TABLE exam(
+    exam_id 		INT,
+    `code` 			VARCHAR(50),
+    title 			VARCHAR(100),
+    category_id 	INT,
+    duration 		INT, 
+    creator_id 		INT,
+    create_date		DATE
 );
 
-CREATE TABLE ExamQuestion (
-    ExamID 		INT,
-    QuestionID 	INT
+CREATE TABLE exam_question(
+    exam_id 		INT,
+    question_id 	INT
 );
 

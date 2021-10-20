@@ -6,7 +6,7 @@ ALTER DATABASE testing_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 DROP TABLE IF EXISTS department; 
 CREATE TABLE department(
     department_id 	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    department_name VARCHAR(50) CHAR SET UTF8MB4 NOT NULL
+    department_name VARCHAR(50) CHAR SET UTF8MB4 UNIQUE NOT NULL
 );
 -- thêm data vào bảng department
 INSERT INTO department(department_name)
@@ -37,6 +37,7 @@ VALUES
     ('PM');
 SELECT * FROM `position`;
 -- table 3
+SET foreign_key_checks = 0; -- ??
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account`(
     account_id 		INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -49,6 +50,7 @@ CREATE TABLE `account`(
     FOREIGN KEY (department_id) REFERENCES department(department_id),
     FOREIGN KEY (position_id) REFERENCES `position`(position_id)
 );
+SET foreign_key_checks = 1;
 -- thêm data vào bảng account
 INSERT INTO `account`(email, username, full_name, department_id, position_id, create_date)
 VALUES
@@ -56,13 +58,14 @@ VALUES
     ('nguyen_b@gmail.com', 'nguyen_b', 'Nguyễn B', 1, 2, '2021/08/16'),
     ('tran_c@gmail.com', 'tran_c', 'Trần C', 2, 2, '2021/08/15'),
     ('le_d@gmail.com', 'le_d', 'Lê D', 2, 2, '2021/07/15'),
-    ('nguyen_e@gmail.com', 'nguyen_e', 'Nguyễn E', 3, 1, '2021/06/16');
+    ('nguyen_e@gmail.com', 'nguyen_e', 'Nguyễn E', 3, 1, '2021/06/16'),
+    ('hao_dt@gmail.com', 'do_h', 'Đỗ Thị Hảo', 3, 1, '2021/06/16');
 SELECT * FROM `account`;
 -- table 4
 DROP TABLE IF EXISTS `group`;
 CREATE TABLE `group`(
     group_id 	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    group_name 	VARCHAR(50) CHAR SET UTF8MB4,
+    group_name 	VARCHAR(50) CHAR SET UTF8MB4 NOT NULL UNIQUE,
     creator_id 	INT NOT NULL, -- (FK)
     create_date DATE,
     FOREIGN KEY (creator_id) REFERENCES `account`(account_id)
@@ -70,18 +73,22 @@ CREATE TABLE `group`(
 -- thêm data vào bảng group
 INSERT INTO `group`(group_name, creator_id, create_date)
 VALUES
-	('group1', 2, '2021/10/18'),
-    ('group2', 3, '2021/10/16'),
-    ('group3', 1, '2021/10/15'),
-    ('group4', 5, '2021/10/16'),
-    ('group5', 4, '2021/10/15');
+	('group1', 2, '2018/10/18'),
+	('group2', 1, '2018/10/17'),
+	('group3', 1, '2018/10/16'),
+	('group4', 3, '2018/10/15'),
+    ('group5', 3, '2018/12/19'),
+    ('group6', 1, '2021/10/15'),
+    ('group7', 5, '2021/10/16'),
+    ('group8', 4, '2021/10/15');
 SELECT * FROM `group`;
 -- table 5
 DROP TABLE IF EXISTS group_account;
 CREATE TABLE group_account(
-    group_id 	INT NOT NULL,
-	account_id 	INT NOT NULL UNIQUE,
+    group_id 	INT NOT NULL, -- QUAN HE NHIEU NHIEU 
+	account_id 	INT NOT NULL, -- QUAN HE NHIEU NHIEU 
     join_date 	DATE,
+    PRIMARY KEY (group_id, account_id),
     FOREIGN KEY (group_id) REFERENCES `group`(group_id),
     FOREIGN KEY (account_id) REFERENCES `account`(account_id)
 );
@@ -92,7 +99,8 @@ VALUES
     (5, 1, '2021/10/16'),
     (4, 3, '2021/10/15'),
     (2, 4, '2021/10/16'),
-    (3, 9, '2021/10/15');
+    (3, 5, '2021/10/15');
+SELECT * FROM group_account;
 -- table 6
 DROP TABLE IF EXISTS type_question;
 CREATE TABLE type_question(
@@ -107,11 +115,12 @@ VALUES
 	('multiple_choice'),
 	('essay'),
 	('multiple_choice');
+SELECT * FROM type_question;
 -- table 7
 DROP TABLE IF EXISTS category_question;
 CREATE TABLE category_question(
     category_id 	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    category_name 	VARCHAR(50) CHAR SET UTF8MB4 NOT NULL
+    category_name 	VARCHAR(50) CHAR SET UTF8MB4 NOT NULL UNIQUE
 );
 -- thêm data vào bảng category_question
 INSERT INTO category_question(category_name)
@@ -121,8 +130,10 @@ VALUES
 	('SQL'),
 	('Postman'),
 	('Ruby');
+SELECT * FROM category_question;
 -- table 8
 DROP TABLE IF EXISTS question;
+SET foreign_key_checks = 0;
 CREATE TABLE question(
     question_id 	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     content 		VARCHAR(500) CHAR SET UTF8MB4 NOT NULL,
@@ -134,6 +145,7 @@ CREATE TABLE question(
     FOREIGN KEY (type_id) REFERENCES type_question(type_id),
     FOREIGN KEY (creator_id) REFERENCES `account`(account_id)
 );
+SET foreign_key_checks = 1;
 -- thêm data vào bảng question
 INSERT INTO question(content, category_id, type_id, creator_id, create_date)
 VALUES
@@ -141,7 +153,9 @@ VALUES
 	('câu hỏi 2', 3, 5, 4, '2021/10/18'),
 	('câu hỏi 3', 1, 1, 2, '2021/10/18'),
 	('câu hỏi 4', 4, 4, 1, '2021/10/18'),
-	('câu hỏi 5', 5, 3, 5, '2021/10/18');
+	('câu hỏi 5', 5, 3, 5, '2021/10/18'),
+    ('question :)) 5', 5, 3, 5, '2021/10/18');
+SELECT * FROM question;
 -- table 9
 DROP TABLE IF EXISTS answer;
 CREATE TABLE answer(
@@ -155,32 +169,37 @@ CREATE TABLE answer(
 INSERT INTO answer(content, question_id, is_correct)
 VALUES
 	('câu trả lời 1', 2, true),
-	('câu trả lời 2', 3, false),
-	('câu trả lời 3', 1, true),
-	('câu trả lời 4', 4, false),
-	('câu trả lời 5', 5, true);
+	('câu trả lời 2', 2, true),
+	('câu trả lời 3', 2, true),
+	('câu trả lời 4', 2, true),
+	('câu trả lời 5', 3, false),
+	('câu trả lời 6', 1, true),
+	('câu trả lời 7', 4, false),
+	('câu trả lời 8', 5, true);
 SELECT * FROM answer;
 -- table 10
 DROP TABLE IF EXISTS exam;
+SET foreign_key_checks = 0;
 CREATE TABLE exam(
     exam_id 		INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `code` 			VARCHAR(50) CHAR SET UTF8MB4 NOT NULL,
     title 			VARCHAR(100) CHAR SET UTF8MB4 NOT NULL,
     category_id 	INT NOT NULL,
-    duration 		INT NOT NULL, 
+    duration 		INT NOT NULL, -- ENUM('15', '30', '45', '60', '75', '90'), 
     creator_id 		INT NOT NULL,
     create_date		DATE,
     FOREIGN KEY (category_id) REFERENCES category_question(category_id),
     FOREIGN KEY (creator_id) REFERENCES `account`(account_id)
 );
+SET foreign_key_checks = 1;
 -- thêm data vào bảng exam
 INSERT INTO exam(`code`, title, category_id, duration, creator_id, create_date)
 VALUES
-	('ABC1', 'title 1', 1, 3600, 5, '2021/10/18'),
-	('DEF2', 'title 2', 3, 7200, 3, '2021/10/18'),
-	('ACD3', 'title 3', 4, 3600, 4, '2021/10/18'),
-	('ACB4', 'title 4', 5, 7200, 2, '2021/10/18'),
-	('EFD5', 'title 5', 2, 3600, 1, '2021/10/18');
+	('ABC1', 'title 1', 1, 15, 5, '2021/10/18'),
+	('DEF2', 'title 2', 3, 30, 3, '2021/10/18'),
+	('ACD3', 'title 3', 4, 90, 4, '2019/12/19'),
+	('ACB4', 'title 4', 5, 60, 2, '2021/10/18'),
+	('EFD5', 'title 5', 2, 75, 1, '2021/10/18');
 SELECT * FROM exam;
 -- table 11
 DROP TABLE IF EXISTS exam_question;
