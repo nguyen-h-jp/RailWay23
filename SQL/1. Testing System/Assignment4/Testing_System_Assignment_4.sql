@@ -68,12 +68,16 @@ HAVING COUNT(a.account_id) = (SELECT MIN(account_count)
 								FROM (SELECT COUNT(a.account_id) AS account_count
 										FROM `account` a RIGHT JOIN `position` p ON a.position_id = p.position_id  
                                         GROUP BY p.position_id) AS test);
+
+
 -- Question 11: Thống kê mỗi phòng ban có bao nhiêu dev, test, scrum master, PM(em chưa làm ra câu này, sáng mai em suy nghĩ cách làm sau, cách làm dưới của em là em đang hiểu sai đề ạ)
 SELECT position_name, COUNT(a.account_id) AS 'Số lượng người trong phòng ban này'
 FROM position p LEFT JOIN `account` a ON p.position_id = a.position_id
 GROUP BY p.position_id;
--- Question 12: Lấy thông tin chi tiết của câu hỏi bao gồm: thông tin cơ bản của
--- question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, …
+
+
+
+-- Question 12: Lấy thông tin chi tiết của câu hỏi bao gồm: thông tin cơ bản của question, loại câu hỏi, ai là người tạo ra câu hỏi, câu trả lời là gì, …
 SELECT *
 FROM question;
 SELECT *
@@ -82,10 +86,72 @@ SELECT q.question_id, q.content, tq.type_name, ac.username, a.content
 FROM question q LEFT JOIN answer a ON q.question_id = a.question_id
 LEFT JOIN `account` ac ON ac.account_id = q.creator_id
 LEFT JOIN type_question tq ON tq.type_id = q.type_id
-GROUP BY q.question_id
+GROUP BY q.question_id;
 -- Question 13: Lấy ra số lượng câu hỏi của mỗi loại tự luận hay trắc nghiệm
+SELECT *
+FROM question;
+SELECT *
+FROM type_question;
+SELECT tq.type_name, COUNT(q.type_id) AS 'Số lượng câu hỏi'
+FROM question q LEFT JOIN type_question tq ON q.type_id = tq.type_id
+GROUP BY tq.type_id;
 -- Question 14: Lấy ra group không có account nào 
--- Question 15: Lấy ra group không có account nào
+SELECT *
+FROM `group`;
+SELECT *
+FROM group_account;
+SELECT g.group_id, g.group_name, COUNT(ga.group_id) AS 'Số lượng người trong Group'
+FROM group_account ga RIGHT JOIN `group` g ON ga.group_id = g.group_id
+GROUP BY g.group_id
+HAVING COUNT(ga.group_id) = 0;
+-- Question 15: Lấy ra group không có account nào(giống câu 14)
 -- Question 16: Lấy ra question không có answer nào
+SELECT q.question_id, q.content, COUNT(a.answer_id) AS 'Số lượng câu trả lời cho câu hỏi'
+FROM question q LEFT JOIN answer a ON q.question_id = a.question_id
+GROUP BY q.question_id
+HAVING COUNT(a.answer_id) = 0;
+-- Exercise 2: Union
+-- Question 17:
+-- 		a) Lấy các account thuộc nhóm thứ 1
+SELECT *
+FROM group_account;
+SELECT *
+FROM `account`;
 
--- Exercise 2:
+SELECT a.username, ga.group_id
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+WHERE group_id = 1;
+
+-- 		b) Lấy các account thuộc nhóm thứ 2
+SELECT a.username, ga.group_id
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+WHERE group_id = 2;
+-- 		c) Ghép 2 kết quả từ câu a) và câu b) sao cho không có record nào trùng nhau
+SELECT a.username
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+WHERE group_id = 1
+UNION
+SELECT a.username
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+WHERE group_id = 2;
+-- Question 18:
+-- 		a) Lấy các group có lớn hơn 5 thành viên
+SELECT ga.group_id, COUNT(a.account_id)
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+GROUP BY ga.group_id
+HAVING COUNT(a.account_id) > 5;
+-- 		b) Lấy các group có nhỏ hơn 7 thành viên
+SELECT ga.group_id, COUNT(a.account_id)
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+GROUP BY ga.group_id
+HAVING COUNT(a.account_id) < 7;
+-- 		c) Ghép 2 kết quả từ câu a) và câu b)
+SELECT ga.group_id, COUNT(a.account_id)
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+GROUP BY ga.group_id
+HAVING COUNT(a.account_id) > 5
+UNION ALL
+SELECT ga.group_id, COUNT(a.account_id)
+FROM group_account ga LEFT JOIN `account` a ON ga.account_id = a.account_id
+GROUP BY ga.group_id
+HAVING COUNT(a.account_id) < 7;
