@@ -6,14 +6,14 @@ use fresher_training_management;
 ALTER DATABASE fresher_training_management CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 DROP TABLE IF EXISTS trainee;
 CREATE TABLE trainee (
-    trainee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(50)CHAR SET UTF8MB4 NOT NULL,
-    birth_date DATE NOT NULL,
-    gender ENUM('male', 'female', 'unknown'),
-    et_iq INT CHECK (0 <= ET_IQ AND ET_IQ <= 20),
-    et_gmath INT CHECK (0 <= ET_Gmath AND ET_Gmath <= 20),
-    et_english INT CHECK (0 <= ET_English AND ET_English <= 20),
-    training_class VARCHAR(50)CHAR SET UTF8MB4 NOT NULL,
+    trainee_id 		INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    full_name 		VARCHAR(50)CHAR SET UTF8MB4 NOT NULL,
+    birth_date 		DATE NOT NULL,
+    gender 			ENUM('male', 'female', 'unknown'),
+    et_iq 			INT CHECK (0 <= ET_IQ AND ET_IQ <= 20),
+    et_gmath 		INT CHECK (0 <= ET_Gmath AND ET_Gmath <= 20),
+    et_english 		INT CHECK (0 <= ET_English AND ET_English <= 50),
+    training_class 	VARCHAR(50)CHAR SET UTF8MB4 NOT NULL,
     evalution_notes VARCHAR(500)CHAR SET UTF8MB4 NOT NULL
 );
 
@@ -38,23 +38,25 @@ FROM
 INSERT INTO trainee(full_name, birth_date, gender, et_iq, et_gmath, et_english, training_class, evalution_notes, vti_account)
 VALUES
 	('zed', '1990/01/01', 'male', 20, 20, 20, 'LOL1', '特になし', 'zed_vti'),
-	('leesin', '1991/01/01', 'male', 1, 11, 19, 'LOL1', '特になし', 'leesin_vti'),
-	('yasuo', '1992/01/01', 'male', 18, 7, 18, 'LOL1', '特になし', 'yasuo_vti'),
+	('leesin', '1991/02/01', 'male', 1, 11, 19, 'LOL1', '特になし', 'leesin_vti'),
+	('yasuo', '1992/03/01', 'male', 18, 7, 18, 'LOL1', '特になし', 'yasuo_vti'),
 	('xinzhao', '1993/01/01', 'male', 8, 8, 8, 'LOL1', '特になし', 'xinzhao_vti'),
-	('raze', '1994/01/01', 'female', 7, 7, 19, 'VAL1', '特になし', 'raze_vti'),
-	('viper', '1995/01/01', 'female', 18, 18, 18, 'VAL1', '特になし', 'viper_vti'),
-	('jett', '1996/01/01', 'female', 18, 18, 18, 'VAL1', '特になし', 'jett_vti'),
-	('brimstone', '1997/01/01', 'male', 18, 18, 18, 'VAL1', '特になし', 'brimstone_vti'),
+	('raze', '1994/02/01', 'female', 7, 7, 19, 'VAL1', '特になし', 'raze_vti'),
+	('viper', '1995/03/01', 'female', 18, 18, 18, 'VAL1', '特になし', 'viper_vti'),
+	('jett', '1996/01/02', 'female', 18, 18, 18, 'VAL1', '特になし', 'jett_vti'),
+	('brimstone', '1997/03/01', 'male', 18, 18, 18, 'VAL1', '特になし', 'brimstone_vti'),
 	('sova', '1998/01/01', 'male', 18, 18, 18, 'VAL1', '特になし', 'sova_vti'),
 	('breach', '1999/01/01', 'male', 18, 18, 18, 'VAL1', '特になし', 'breach_vti');
     
 -- Question 2: viết lệnh để lấy ra tất cả các thực tập sinh đã vượt qua bài test đầu vào, nhóm chúng thành các tháng sinh khác nhau
 
 SELECT 
-    *
-FROM
-    trainee;
-
+	*
+FROM trainee;
+SELECT YEAR(birth_date) AS 'thang sinh',
+    GROUP_CONCAT(full_name) AS group_trainee
+FROM trainee
+GROUP BY YEAR(birth_date);
 SELECT 
     *
 FROM
@@ -69,10 +71,9 @@ GROUP BY birth_date;
 -- Question 3: viết lệnh để lấy ra thực tập sinh có tên dài nhất, lấy ra các thông tin sau: tên, tuổi, các thông tin cơ bản (như đã định nghĩa trong các table)
 
 SELECT 
-    *
+*
 FROM
     trainee;
-
 SELECT 
     *
 FROM
