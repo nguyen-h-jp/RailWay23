@@ -62,8 +62,8 @@ CREATE TABLE `account`(
 
 INSERT INTO `account`(email, username, full_name, department_id, position_id, create_date)
 VALUES
-	('a@gmail.com', 'a1', 'Nguyễn Văn A', 1, 1, '2021/09/18'),
-	('a2@gmail.com', 'a2', 'Nguyễn Văn A2', 1, 2, '2021/09/18'),
+	('a@gmail.com', 'a1', 'Trần Văn A', 1, 1, '2021/09/18'),
+	('a2@gmail.com', 'a2', 'Trần Văn A2', 1, 2, '2021/09/18'),
     ('b@gmail.com', 'b1', 'Nguyễn Văn B', 1, 1, '2021/08/16'),
     ('c@gmail.com', 'c1', 'Nguyễn Văn C', 1, 1, '2021/08/15'),
     ('d@gmail.com', 'd1', 'Nguyễn Văn D', 2, 2, '2021/07/15'),
@@ -170,7 +170,7 @@ VALUES
 DROP TABLE IF EXISTS question;
 CREATE TABLE question(
     question_id 	INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    content 		VARCHAR(500) CHAR SET UTF8MB4 NOT NULL,
+    content 		VARCHAR(10000) CHAR SET UTF8MB4 NOT NULL,
     category_id 	INT NOT NULL,
     type_id 		INT NOT NULL,
     creator_id 		INT NOT NULL,
@@ -184,12 +184,27 @@ CREATE TABLE question(
 
 INSERT INTO question(content, category_id, type_id, creator_id, create_date)
 VALUES
-	('Java là gì'			, 1, 1, 1, '2021/10/18'),
-	('Java dễ học không'	, 1, 1, 1, '2021/10/18'),
-	('.Net là gì'			, 2, 1, 1, '2021/10/18'),
-	('SQL là gì'			, 3, 1, 1, '2021/10/18'),
-	('Postman là gì'		, 4, 2, 2, '2021/10/18'),
-    ('Ruby là gì'			, 5, 2, 2, '2021/10/18');
+	('a a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
+    a â a a  a a a a a â a a a a a a â a a a a a a a â
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a '			, 1, 1, 1, '2021/10/18'),
+	('Java dễ học không'	, 1, 1, 2, '2021/10/18'),
+	('.Net là gì'			, 2, 1, 3, '2021/10/18'),
+	('SQL là gì'			, 3, 1, 4, '2021/10/18'),
+	('Postman là gì'		, 4, 2, 5, '2021/10/18'),
+    ('Ruby là gì'			, 5, 2, 6, '2021/10/18');
 -- table 9
 
 DROP TABLE IF EXISTS answer;
