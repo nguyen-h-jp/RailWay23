@@ -24,7 +24,8 @@ VALUES
 	('Phó giám đốc'	),
 	('Giám đốc'		),
 	('Thư kí'		),
-	('Bán hàng'		);
+	('Bán hàng'		),
+	('Waiting Room'	);
     
 -- table 2 
 
@@ -199,12 +200,13 @@ VALUES
     a â a a  a a a a a â a a a a a a â a a a a a a a â
     dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a 
     a â a a  a a a a a â a a a a a a â a a a a a a a â
-    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a '			, 1, 1, 1, '2021/10/18'),
-	('Java dễ học không'	, 1, 1, 2, '2021/10/18'),
-	('.Net là gì'			, 2, 1, 3, '2021/10/18'),
-	('SQL là gì'			, 3, 1, 4, '2021/10/18'),
-	('Postman là gì'		, 4, 2, 5, '2021/10/18'),
-    ('Ruby là gì'			, 5, 2, 6, '2021/10/18');
+    dasdd á á á a s adasdsad asd á adas a s a a a a  a a a a a a a a   a a '			, 1, 1, 1, '2020/10/18'),
+	('Java dễ học không'	, 1, 1, 2, '2020/10/18'),
+	('.Net là gì a a a a a a a a a a a a a a a a a a a'			, 2, 1, 3, '2020/10/18'),
+	('SQL là gì'			, 3, 1, 4, '2021/4/18'),
+	('Postman là gì a a a a a a a a a a a a a a a a a a'		, 4, 2, 5, '2021/7/18'),
+    ('Ruby là gì'			, 5, 2, 6, '2021/9/18'),
+    ('Ruby có phải là tên mội món ăn không'			, 5, 2, 6, '2021/7/14');
 -- table 9
 
 DROP TABLE IF EXISTS answer;
@@ -258,8 +260,9 @@ VALUES
 	('DEF2', 'title 2', 1, 15, 5, '2021/10/18'),
 	('DEF2', 'title 2', 3, 30, 3, '2021/10/18'),
 	('ACD3', 'title 3', 4, 90, 4, '2019/12/19'),
-	('ACB4', 'title 4', 5, 60, 2, '2021/10/18'),
-	('EFD5', 'title 5', 2, 75, 1, '2021/10/18');
+	('ACB4', 'title 4', 5, 60, 2, '2016/10/18'),
+	('EFD5', 'title 5', 2, 75, 1, '2017/01/01'),
+	('EFD6', 'title 6', 2, 75, 1, '2018/10/31');
 
 -- table 11
 
