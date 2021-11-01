@@ -52,7 +52,7 @@ CREATE TABLE `account`(
     email 			VARCHAR(50) UNIQUE  NOT NULL,
     username 		VARCHAR(50) CHAR SET UTF8MB4 UNIQUE  NOT NULL,
     full_name 		VARCHAR(50) CHAR SET UTF8MB4 NOT NULL,
-    department_id 	INT NOT NULL, -- (FK)
+    department_id 	INT, -- (FK)
     position_id 	INT NOT NULL, -- (FK)
     create_date 	DATE,
     FOREIGN KEY (department_id) REFERENCES department(department_id) ON DELETE CASCADE,
@@ -73,7 +73,8 @@ VALUES
     ('g@gmail.com', 'g1', 'Nguyễn Văn G', 3, 3, '2021/06/16'),
     ('h@gmail.com', 'h1', 'Nguyễn Văn H', 3, 3, '2021/06/16'),
     ('i@gmail.com', 'i1', 'Nguyễn Văn I', 3, 3, '2021/06/16'),
-    ('k@gmail.com', 'k1', 'Nguyễn Văn K', 3, 3, '2021/06/16');
+    ('k@gmail.com', 'k1', 'Nguyễn Văn K', 3, 3, '2021/06/16'),
+    ('admin@gmail.com', 'admin', 'Nguyễn Văn K', 3, 3, '2021/06/16');
     
 -- table 4
 
@@ -164,7 +165,8 @@ VALUES
 	('SQL'),
 	('Postman'),
 	('Ruby'),
-	('Javascript');
+	('Javascript'),
+	('category free');
     
 -- table 8
 
@@ -205,7 +207,12 @@ VALUES
 	('.Net là gì a a a a a a a a a a a a a a a a a a a'			, 2, 1, 3, '2020/10/18'),
 	('SQL là gì'			, 3, 1, 4, '2021/4/18'),
 	('Postman là gì a a a a a a a a a a a a a a a a a a'		, 4, 2, 5, '2021/7/18'),
+	('Postman là gì a a a a a a a a a a a a a a a a a a'		, 4, 1, 5, '2021/7/18'),
     ('Ruby là gì'			, 5, 2, 6, '2021/9/18'),
+    ('question 1'			, 7, 2, 6, '2021/9/18'),
+    ('question 2'			, 7, 2, 6, '2021/9/18'),
+    ('question 3'			, 7, 2, 6, '2021/9/18'),
+    ('question 4'			, 7, 2, 6, '2021/9/18'),
     ('Ruby có phải là tên mội món ăn không'			, 5, 2, 6, '2021/7/14');
 -- table 9
 
@@ -262,7 +269,8 @@ VALUES
 	('ACD3', 'title 3', 4, 90, 4, '2019/12/19'),
 	('ACB4', 'title 4', 5, 60, 2, '2016/10/18'),
 	('EFD5', 'title 5', 2, 75, 1, '2017/01/01'),
-	('EFD6', 'title 6', 2, 75, 1, '2018/10/31');
+	('EFD6', 'title 6', 2, 75, 1, '2018/10/30'),
+	('EFD7', 'title 7', 2, 75, 1, '2021/11/01');
 
 -- table 11
 
@@ -277,9 +285,15 @@ CREATE TABLE exam_question(
 
 INSERT INTO exam_question(exam_id, question_id)
 VALUES
+	(1, 1),
 	(1, 2),
 	(1, 3),
-	(1, 1),
+	(1, 4),
+	(1, 5),
+	(1, 6),
+	(1, 7),
+	(1, 8),
+	(1, 9),
 	(2, 1),
 	(2, 2),
 	(2, 4),
@@ -288,3 +302,4 @@ VALUES
 	(5, 1),
 	(5, 4),
     (5, 5);
+-- hung
