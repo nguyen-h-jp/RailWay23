@@ -5,7 +5,7 @@ use quan_ly_dat_phong;
 -- câu 1: Tạo Bảng và thêm tối thiểu 5 bản ghi cho mỗi Bảng
 drop table if exists khach_hang;
 create table khach_hang(
-	MaKH 	int not null primary key auto_increment,
+	MaKH 	int not null primary key auto_increment unique,
     TenKH 	varchar(50),
     DiaChi 	varchar(50),
     SoDT 	varchar(50)
@@ -21,7 +21,7 @@ values
 
 drop table if exists phong;
 create table phong(
-	MaPhong 			int not null primary key auto_increment,
+	MaPhong 			int not null primary key auto_increment unique,
     LoaiPhong 			varchar(50),
     SoKhachHangToiDa 	int,
     GiaPhong 			decimal(9,0),
@@ -30,15 +30,15 @@ create table phong(
 
 insert into phong(LoaiPhong, SoKhachHangToiDa, GiaPhong, MoTa)
 values 
-	('Loại 1', 5, 500000, 'Không có'),
-	('Loại 2', 10, 1000000, 'Không có'),
-	('Loại 3', 15, 1500000, 'Không có'),
-	('Loại 4', 20, 2000000, 'Không có'),
-	('Loại 5', 25, 2500000, 'Không có');
+	('Loại 1', 5	, 500000	, 'Không có'),
+	('Loại 2', 10	, 1000000	, 'Không có'),
+	('Loại 3', 15	, 1500000	, 'Không có'),
+	('Loại 4', 20	, 2000000	, 'Không có'),
+	('Loại 5', 25	, 2500000	, 'Không có');
 	
 drop table if exists dich_vu_di_kem;
 create table dich_vu_di_kem(
-	MaDV 		int not null primary key auto_increment,
+	MaDV 		int not null primary key auto_increment unique,
     TenDV 		varchar(50),
     DonViTinh 	varchar(50),
     DonGia 		decimal(9,0)
@@ -54,9 +54,9 @@ values
 	    
 drop table if exists dat_phong;
 create table dat_phong(
-	MaDatPhong 		int not null primary key auto_increment,
-    MaPhong 		int, -- fk
-    MaKH 			int, -- fk
+	MaDatPhong 		int not null primary key auto_increment unique,
+    MaPhong 		int not null, -- fk
+    MaKH 			int not null, -- fk
     NgayDat 		date,
     TienDatCoc 		decimal(9,0),
     GhiChu 			varchar(50),
@@ -80,6 +80,7 @@ drop table if exists chi_tiet_su_dung_dv;
 create table chi_tiet_su_dung_dv(
 	MaDatPhong 		int not null, -- fk
     MaDV 			int not null, -- fk
+    primary key(MaDatPhong, MaDV),
     SoLuong 		int,
     FOREIGN KEY (MaDatPhong) REFERENCES dat_phong(MaDatPhong) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (MaDV) REFERENCES dich_vu_di_kem(MaDV) ON DELETE CASCADE ON UPDATE CASCADE
@@ -89,7 +90,9 @@ insert into chi_tiet_su_dung_dv(MaDatPhong, MaDV, SoLuong)
 values 
 	(1, 1, 1),
 	(1, 2, 2),
+	(1, 3, 2),
 	(2, 2, 2),
+	(2, 1, 2),
 	(3, 3, 3),
 	(4, 4, 4),
 	(5, 5, 5);
@@ -139,6 +142,8 @@ CREATE FUNCTION return_phone_number() RETURNS varchar(50)
 		RETURN phone_number_of_max;
     END$$
 DELIMITER ;
+
+select return_phone_number();
 
 -- câu 4: Viết thủ tục tăng giá phòng thêm 10,000 VNĐ so với giá phòng hiện tại cho những phòng có số khách
 -- tối đa lớn hơn 5.
@@ -201,7 +206,7 @@ create procedure 5_don_dat_phong_gan_nhat()
 		from dat_phong dp left join khach_hang kh on dp.MaKH = kh.MaKH
 		left join phong p on dp.MaPhong = p.MaPhong
 		group by dp.MaDatPhong
-		order by date(dp.NgayDat) asc
+		order by date(dp.NgayDat) desc
 		limit 5;
 	end$$
 delimiter ;
