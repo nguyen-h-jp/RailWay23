@@ -88,6 +88,7 @@ create table chi_tiet_su_dung_dv(
 insert into chi_tiet_su_dung_dv(MaDatPhong, MaDV, SoLuong)
 values 
 	(1, 1, 1),
+	(1, 2, 2),
 	(2, 2, 2),
 	(3, 3, 3),
 	(4, 4, 4),
@@ -106,7 +107,8 @@ from khach_hang kh left join dat_phong dp on kh.MaKH = dp.MaKH
 	left join phong p on dp.MaPhong = p.MaPhong
 	left join chi_tiet_su_dung_dv ctsd on dp.MaDatPhong = ctsd.MaDatPhong
     left join dich_vu_di_kem dvdk on ctsd.MaDV = dvdk.MaDV
-	where kh.TenKH = 'Nguyễn Khánh Linh';
+	where kh.TenKH = 'Nguyễn Khánh Linh'
+    group by p.LoaiPhong, dvdk.TenDV;
 
 -- câu 3: Viết Function để trả về Số điện thoại của Khách hàng thuê nhiều phòng nhất trong năm 2020
 
