@@ -1,5 +1,5 @@
 package com.vti.academy;
-import java.time.LocalDate;
+import java.util.Date;
 
 /*Table 10: Exam
  ExamID: định danh của đề thi (auto increment)
@@ -17,5 +17,5 @@ public class Exam {
 	CategoryQuestion category;
 	String duration;
 	Account creator;
-	LocalDate createDate;	
+	Date createDate;	
 }

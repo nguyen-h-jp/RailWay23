@@ -1,5 +1,6 @@
 package com.vti.academy;
 import java.time.LocalDate;
+import java.util.Date;
 
 import com.vti.academy.enums.PositionName;
 import com.vti.academy.enums.TypeName;
@@ -95,19 +96,19 @@ public class Program {
 		GroupAccount gr_account1 = new GroupAccount();
 		gr_account1.group = group1;
 		gr_account1.account = account1;
-		gr_account1.joinDate = LocalDate.of(2020,11,12);
+		gr_account1.joinDate = new Date();
 		
 		gr_account1.group = group1;
 		gr_account1.account = account2;
-		gr_account1.joinDate = LocalDate.of(2020,12,11);
+		gr_account1.joinDate = new Date();
 		
 		gr_account1.group = group1;
 		gr_account1.account = account3;
-		gr_account1.joinDate = LocalDate.of(2020,12,13);
+		gr_account1.joinDate = new Date();
 		
 		gr_account1.group = group2;
 		gr_account1.account = account1;
-		gr_account1.joinDate = LocalDate.of(2021,10,10);
+		gr_account1.joinDate = new Date();
 		
 		//TypeQuestion
 		TypeQuestion tq1= new TypeQuestion();
@@ -148,7 +149,7 @@ public class Program {
 		question1.category = cq1;
 		question1.type = tq1;
 		question1.creator = account1;
-		question1.createDate = LocalDate.of(2021,01,01);
+		question1.createDate = new Date();
 		
 		Question question2 = new Question();
 		question2.questionID = 2;
@@ -156,7 +157,7 @@ public class Program {
 		question2.category = cq1;
 		question2.type = tq2;
 		question2.creator = account1;
-		question2.createDate = LocalDate.of(2021,01,02);
+		question2.createDate = new Date();
 		
 		Question question3 = new Question();
 		question3.questionID = 3;
@@ -164,7 +165,7 @@ public class Program {
 		question3.category = cq1;
 		question3.type = tq2;
 		question3.creator = account1;
-		question3.createDate = LocalDate.of(2021,01,03);
+		question3.createDate = new Date();
 		
 		Question question4 = new Question();
 		question4.questionID = 4;
@@ -172,7 +173,7 @@ public class Program {
 		question4.category = cq3;
 		question4.type = tq1;
 		question4.creator = account2;
-		question4.createDate = LocalDate.of(2021,01,04);
+		question4.createDate = new Date();
 		
 		//Answer
 		
@@ -208,7 +209,6 @@ public class Program {
 		exam1.category = cq1;
 		exam1.duration = "90 phút";
 		exam1.creator = account1;
-		exam1.createDate = LocalDate.of(2021,02,02);
 		
 		Exam exam2 = new Exam();
 		exam2.examID = 2;
@@ -217,7 +217,7 @@ public class Program {
 		exam2.category = cq3;
 		exam2.duration = "60 phút";
 		exam2.creator = account2;
-		exam2.createDate = LocalDate.of(2021,02,03);
+		exam2.createDate = new Date();
 		
 		//ExamQuestion
 		ExamQuestion eq1 = new ExamQuestion();

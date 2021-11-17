@@ -1,5 +1,5 @@
 package com.vti.academy;
-import java.time.LocalDate;
+import java.util.Date;
 
 /*Table 5: GroupAccount
  GroupID: định danh của nhóm
@@ -9,5 +9,5 @@ import java.time.LocalDate;
 public class GroupAccount {
 	Group group;
 	Account account;
-	LocalDate joinDate;
+	Date joinDate;
 }

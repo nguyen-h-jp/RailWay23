@@ -1,5 +1,5 @@
 package com.vti.academy;
-import java.time.LocalDate;
+import java.util.Date;
 
 /*Table 8: Question
  QuestionID: định danh của câu hỏi (auto increment)
@@ -15,5 +15,5 @@ public class Question {
 	CategoryQuestion category;
 	TypeQuestion type;
 	Account creator;
-	LocalDate createDate;
+	Date createDate;
 }
