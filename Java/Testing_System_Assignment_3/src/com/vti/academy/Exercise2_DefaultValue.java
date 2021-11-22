@@ -1,12 +1,13 @@
 package com.vti.academy;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Exercise2_DefaultValue {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Question1();
+		question1();
 	}
 	
 //	Question 1:
@@ -16,19 +17,23 @@ public class Exercise2_DefaultValue {
 //		 FullName: "Full name 1"
 //		 CreateDate: now
 
-	static void Question1() {
+	static void question1() {
 		Account[] accountArray = new Account[5];
-	
+		String parttern = "dd-MM-yyyy";
+		SimpleDateFormat dateFormat = new SimpleDateFormat(parttern);
 		for(int i = 0; i < 5; i++) {
 			accountArray[i] = new Account();
 			accountArray[i].email = "Email " + (i + 1);
-			accountArray[i].userName = "User Name " + (i + 1);
-			accountArray[i].fullName = "Full Name " + (i + 1);
-			accountArray[i].createDate = LocalDate.now();
+			accountArray[i].userName = "User name " + (i + 1);
+			accountArray[i].fullName = "Full name " + (i + 1);
+			accountArray[i].createDate = new Date();
 		}
 		
 		for(Account acc : accountArray) {
-			System.out.println("Email: " + acc.email + ", UserName: " + acc.userName + ", FullName: " + acc.fullName + ", CreateDate: " + acc.createDate);
+			System.out.println("Email: " + acc.email + 
+					", UserName: " + acc.userName + 
+					", FullName: " + acc.fullName + 
+					", CreateDate: " + dateFormat.format(acc.createDate));
 		}
 	}
 }

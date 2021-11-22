@@ -1,5 +1,5 @@
 package com.vti.academy;
-import java.time.LocalDate;
+
 import java.util.Date;
 
 import com.vti.academy.enums.PositionName;
@@ -62,7 +62,7 @@ public class Program {
 		account1.fullName = "Nguyễn Văn A";
 		account1.department = department1;
 		account1.position = position1;
-		account1.createDate = LocalDate.now();
+		account1.createDate = new Date();
 		account1.groups = new  Group[] {group1, group2};
 		
 		Account account2 = new Account();
@@ -72,7 +72,7 @@ public class Program {
 		account2.fullName = "Nguyễn Văn B";
 		account2.department = department2;
 		account2.position = position2;
-		account2.createDate = LocalDate.now();
+		account2.createDate = new Date();
 		account2.groups = new  Group[] {group1};
 		
 		Account account3 = new Account();
@@ -82,7 +82,7 @@ public class Program {
 		account3.fullName = "Nguyễn Văn C";
 		account3.department = department3;
 		account3.position = position3;
-		account3.createDate = LocalDate.now();
+		account3.createDate = new Date();
 		account2.groups = new  Group[] {group1};
 	
 		

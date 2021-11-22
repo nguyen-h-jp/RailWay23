@@ -1,5 +1,5 @@
 package com.vti.academy;
-import java.time.LocalDate;
+import java.util.Date;
 
 /*Table 3: Account
  AccountID: định danh của User (auto increment)
@@ -17,6 +17,6 @@ public class Account {
 	String fullName;
 	Department department;
 	Position position;
-	LocalDate createDate;
+	Date createDate;
 	Group[] groups;
 }
