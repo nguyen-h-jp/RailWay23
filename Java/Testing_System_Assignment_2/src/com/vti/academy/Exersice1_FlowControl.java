@@ -380,7 +380,7 @@ public class Exersice1_FlowControl {
 		System.out.println();
 		for(int i = 0; i < dp.length; ++i) {
 			System.out.println("Thông tin department thứ " + (i + 1) + " là:");
-			System.out.println("Id: " + dp[i].departmentID + "\nName: " + dp[i].departmentName);
+			System.out.println("\tId: " + dp[i].departmentID + "\n\tName: " + dp[i].departmentName);
 		}
 		System.out.println();
 	}

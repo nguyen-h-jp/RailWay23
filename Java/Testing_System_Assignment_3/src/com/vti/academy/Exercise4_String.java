@@ -19,7 +19,10 @@ public class Exercise4_String {
 //		question11("sjdakâasljdkasjkd");
 //		question12("Nguyễn Văn A");
 //		question13("Nguyễn Văn A2");
-		question14("VTI Academy", "e", "*");
+//		question14("VTI Academy", "e", "*");
+//		question15c1(sc);
+//		question15c2(sc);
+		question16(sc);
 		sc.close();
 	}
 
@@ -273,5 +276,70 @@ public class Exercise4_String {
 	
 	static void question14(String s, String oldChar, String newChar) {
 		System.out.println(s.replace(oldChar, newChar));
+	}
+	
+	/*
+	 * Question 15 (Optional): Revert string by word 
+	 * Đảo ngược các ký tự của chuỗi cách nhau bởi dấu cách 
+	 * mà không dùng thư viện. 
+	 * Ví dụ: " I am developer " => "developer am I". 
+	 * Các ký tự bên trong chỉ cách nhau đúng một dấu khoảng cách.
+	 * Gợi ý: Các bạn cần loại bỏ dấu cách ở đầu và cuối câu, 
+	 * thao tác cắt chuỗi theo dấu cách
+	 */
+	//c1
+	static void question15c1(Scanner sc) {
+		System.out.println("Nhập vào 1 String: ");
+		String input = sc.nextLine().trim();
+		String[] inputToStringArray = input.split("\s+");
+//		String[] reversedStringArray = {};
+		ArrayList<String> reversedStringArray = new ArrayList<String>();
+		for (int i = inputToStringArray.length - 1; i >= 0; --i) {
+			reversedStringArray.add(inputToStringArray[i]);	
+		}
+		for (String string : reversedStringArray) {
+			System.out.printf("%s ", string);
+		}
+	}
+	//c2
+	static void question15c2(Scanner sc) {
+		System.out.println("Nhập vào 1 String: ");
+		String input = sc.nextLine().trim();
+		input = input.replaceAll("\s+", " ");
+		String[] s = input.split(" "); 
+		for (int i = s.length - 1 ; i >= 0; --i) {
+			System.out.printf("%s ", s[i]);
+		}
+	}
+	
+	/*
+	 * Question 16 (Optional)
+	 * Cho một chuỗi str và số nguyên n >= 0. Chia chuỗi str ra làm các phần bằng
+	 * nhau với n ký tự. Nếu chuỗi không chia được thì xuất ra màn hình “KO”.
+	 */
+	
+	static void question16(Scanner sc) {
+		System.out.println("Nhập vào String: ");
+		String inputString = sc.nextLine();
+		ArrayList<String> output = new ArrayList<String>();
+		int inputInteger = 0;
+		do {
+			System.out.println("Nhập vào 1 số nguyên n >= 0: ");
+			inputInteger = sc.nextInt();
+			if(inputInteger <= 0) {
+				System.out.println("Số nhập vào không hợp lệ, vui lòng nhập lại!");				
+			}
+		}while(inputInteger <= 0);
+		
+		if(inputString.length() % inputInteger == 0) {
+			for(int i = 0; i < inputString.length(); i += inputInteger) {
+				output.add(inputString.substring(i, i + inputInteger));
+			}			
+		}else {
+			System.out.println("KO");
+		}
+		for (String string : output) {
+			System.out.println(string);
+		}
 	}
 }

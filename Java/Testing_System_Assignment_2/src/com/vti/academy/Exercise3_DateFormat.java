@@ -245,22 +245,22 @@ public class Exercise3_DateFormat {
 //			In ra thông tin: Exam đã tạo ngày nào theo định dạng
 //			Năm – tháng – ngày – giờ – phút – giây
 		
-		Question2(exam1);
+//		Question2(exam1);
 		
 //		Question 3:
 //			Chỉ in ra năm của create date property trong Question 2
-		
-		Question3(question2);
+//		
+//		Question3(question2);
 		
 //		Question 4:
 //			Chỉ in ra tháng và năm của create date property trong Question 2
 		
-		Question4(question2);
+//		Question4(question2);
 		
 //		Question 5:
 //			Chỉ in ra "MM-DD" của create date trong Question 2
 		
-		Question5(question2);
+//		Question5(question2);
 		
 	}
 	
