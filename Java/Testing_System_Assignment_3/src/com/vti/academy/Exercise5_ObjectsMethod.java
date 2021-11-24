@@ -7,22 +7,22 @@ public class Exercise5_ObjectsMethod {
 		// Department
 		Department department1 = new Department();
 		department1.departmentID = 1;
-		department1.departmentName = "Phòng A";
+		department1.departmentName = "Accounting";
 		Department department2 = new Department();
 		department2.departmentID = 2;
-		department2.departmentName = "Accounting";
+		department2.departmentName = "Boss of director";
 		Department department3 = new Department();
 		department3.departmentID = 3;
-		department3.departmentName = "Boss of director";
+		department3.departmentName = "Marketing";
 		Department department4 = new Department();
 		department4.departmentID = 4;
-		department4.departmentName = "Marketing";
+		department4.departmentName = "waiting room";
 		Department department5 = new Department();
 		department5.departmentID = 5;
 		department5.departmentName = "Sale";
 		Department department6 = new Department();
 		department6.departmentID = 6;
-		department6.departmentName = "Waiting room";
+		department6.departmentName = "Phòng A";
 		Department[] departmentArr = { department1, department2, department3, department4, department5, department6 };
 //		question1(departmentArr);
 //		question2(departmentArr);
@@ -30,6 +30,7 @@ public class Exercise5_ObjectsMethod {
 //		question4(departmentArr);
 //		question5(departmentArr);
 //		question6(departmentArr);
+		question7(departmentArr);
 
 	}
 
@@ -117,7 +118,38 @@ public class Exercise5_ObjectsMethod {
 	 * Sale
 	 */
 	
-	
-	
-	
+	static void question7(Department[] departmentArr) {
+		for (int i = 0; i < departmentArr.length; i++) {
+			for(int j = 0; j < departmentArr.length; j++){
+				String[] stringArray1 = departmentArr[i].departmentName.split(" ");
+				String[] stringArray2 = departmentArr[j].departmentName.split(" ");
+				if(stringArray1[stringArray1.length - 1].compareToIgnoreCase(stringArray2[stringArray2.length - 1]) < 0) {
+					Department temp = departmentArr[i];
+					departmentArr[i] = departmentArr[j];
+					departmentArr[j] = temp;
+				}	
+			}
+		}
+		for(int i = 0; i < departmentArr.length; i++) {
+			System.out.println(departmentArr[i]);
+		}
+	}
 }
+/*//	static void reverse(Department [] departmentArr, int n) {
+//		String [] temp = new String [n];
+//		int j = n;
+//		for (int i = 0; i < n; i++) {
+//			temp [j - 1] = departmentArr[i].departmentName;
+//			j--;	
+//		}
+//		for (String string : temp) {
+//			System.out.println(string);
+//		}
+//	}
+//	
+//	static void question7(Department[] departmentArr) {
+//		for (Department department : departmentArr) {
+//			reverse(department.departmentName, departmentArr.length);
+//			System.out.println(department);
+//		}
+*/	
