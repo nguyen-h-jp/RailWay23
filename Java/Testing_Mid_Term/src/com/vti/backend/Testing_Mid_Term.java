@@ -53,6 +53,8 @@ public class Testing_Mid_Term {
 			case 5:
 				dangNhap(sc);
 				break;
+			case 6:
+				return;
 			default:
 				System.out.println("Số nhập vào không hợp lệ, vui lòng nhập lại");
 			}
