@@ -1,0 +1,244 @@
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    /* background-color: grey; */
+}
+
+#col-1 {
+    height: 44px;
+    flex: 1;
+    background-color: gray;
+    /* border-right: 1px solid #000; */
+    height: 800px;
+}
+
+#col-2 {
+    height: 44px;
+    flex: 3;
+}
+
+#menu-bar {
+    height: 44px;
+}
+
+#col-2-row-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: gray; */
+}
+
+#row-1-col-1 {
+    display: flex;
+    flex-direction: row;
+}
+
+#row-1-col-2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#item-2,
+#item-3,
+#item-4,
+#item-5 {
+    font-size: 22px;
+    padding-top: 10px;
+}
+
+.p-5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.p-5-5 {
+    padding: 5 5;
+    /* padding-right: 5px; */
+}
+
+
+/* #col-2-row-2 {} */
+
+#manage-group {
+    border: 1px solid black;
+}
+
+#list-group-head {
+    border-bottom: 1px solid #000;
+}
+
+#function-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#function-menu-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+table,
+td,
+th {
+    border: 2px solid black;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#group-list-table {
+    padding: 5px;
+}
+
+#createGroupForm {
+    padding: 20px 20px;
+    height: 100px;
+    width: 300px;
+    background-color: gray;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    display: none;
+}
+
+#notification-success {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(115, 236, 115);
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    display: none;
+}
+
+#notification-fail {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(226, 26, 26);
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    display: none;
+}
+
+#confirmForm {
+    padding: 20px 20px;
+    height: 100px;
+    width: 300px;
+    background-color: gray;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    display: none;
+}
+
+#detailGroup {
+    border: 1px solid #000;
+    display: none;
+}
+
+#editGroupNameForm {
+    padding: 20px 20px;
+    height: 100px;
+    width: 300px;
+    background-color: gray;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    display: none;
+}
+
+#detailGroup {
+    display: none;
+}
+
+
+/* 
+#idOfGroup {
+    display: none;
+} */

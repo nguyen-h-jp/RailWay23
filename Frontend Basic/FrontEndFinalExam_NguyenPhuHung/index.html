@@ -1,0 +1,142 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/all.min.css">
+    <title>NguyenPhuHung</title>
+</head>
+
+<body>
+    <div id="main">
+        <div id="col-1">side menu</div>
+        <div id="col-2">
+            <div id="col-2-row-1">
+                <div id="row-1-col-1">
+                    <div id="item-1" class="p-5">
+                        <a href="#">
+                            <img src="https://vti.com.vn/wp-content/uploads/2021/06/logo_vti_dark.svg" alt="">
+                        </a>
+                    </div>
+                    <a href="#">
+                        <i id="item-2" class="fas fa-bars p-5"></i>
+                    </a>
+
+
+
+                </div>
+                <div id="row-1-col-2">
+
+                    <div>
+                        <i id="item-3" class="fa-solid fa-bell p-5"></i>
+                    </div>
+                    <div>
+                        <i id="item-4" class="fa-solid fa-user p-5"></i>
+                    </div>
+                    <div id="item-5" class="p-5">
+                        Admin
+                    </div>
+                </div>
+
+            </div>
+            <div id="col-2-row-2">
+                <div id="manage-group" class="p-5-5"><span>Manage Group</span><span><i class="fas fa-users"></i></span>
+                    <!-- <div id="successNotification">Tạo thành công</div> -->
+                    <div id="list-group">
+                        <div id="list-group-head">List group
+                        </div>
+                        <br>
+                        <div id="list-group-body">
+                            <div id="function-menu">
+                                <div id="function-menu-left">
+                                    <div id="function-search">
+                                        <input id="search-input" type="text" placeholder="Nhập tên nhóm cần tìm kiếm">
+                                        <button id="search-group-name">
+                                            <i id="search-icon" class="fas fa-search"></i>
+
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div id="function-menu-right" class="pl-10">
+                                    <div id="function-add">
+                                        <button id="addGroupBtn">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                    </div>
+                                    <div id="function-update" class="pl-10">
+                                        <button id="refresh-button">
+                                                <i class="fas fa-sync-alt"></i>
+    
+                                            </button>
+                                    </div>
+                                    <div id="function-delete" class="pl-10">
+                                        <button id="delGroupBtn">
+                                                <i class="fas fa-trash-alt"></i>
+                                                
+                                            </button>
+                                    </div>
+                                    <a href="" style="text-decoration: none; color:lightblue"></a>
+                                </div>
+                            </div>
+                            <div id="createGroupForm">
+                                <label for="groupNameInput"><b>Nhập tên nhóm</b></label>
+                                <input type="text" placeholder="Nhập tên nhóm" id="groupNameInput" required><br>
+                                <button id="saveCreateGroupForm">Save</button>
+                                <button id="cancelCreateGroupForm">Cancel</button>
+                                <div id="existedMessage"></div>
+                            </div>
+                            <div id="confirmForm">
+                                <div>Bạn có muốn xóa không</div>
+                                <button id="yesToDelete">Yes</button>
+                                <button id="noToDelete">No</button>
+
+                            </div>
+
+                            <div id="detailGroup" style="display: none;">
+                                <div>Detail Group</div>
+                                <span id="groupName">
+                                    Javacore
+                                </span>
+                                <span>
+                                    <i id="showUpdateModal" class="fa-solid fa-pen-to-square"></i>
+                                </span>
+
+                                <div id="creatorName">A</div>
+                                <div id="createDate">A</div>
+                                <div id="member">A</div>
+                                <button id="hideButton">Ẩn thông tin nhóm</button>
+
+
+
+                            </div>
+
+                            <div id="editGroupNameForm">
+                                <div>Edit Group Name</div>
+                                <span style="display: none;" id="groupId"></span>
+                                <label for="">Group Name</label>
+                                <input id="inputNewGroupName" type="text">
+                                <button id="yesToEdit">Save</button>
+                                <button id="noToEdit">Cancel</button>
+
+                            </div>
+                            <div id="notification-success">Thao tác thành công</div>
+                            <div id="notification-fail">Thao tác thất bại</div>
+                            <div id="group-list-table">
+                                <div id="user-list">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href=""></a>
+                </div>
+            </div>
+        </div>
+
+        <script src="javascript/jQuery.min.js"></script>
+        <script src="javascript/custom.js"></script>
+</body>
+
+</html>
