@@ -1,1 +1,179 @@
-aa
+aavar apiDepartmentURL = "http://localhost:8181/api/v1/departments/"
+
+$(function() {
+    $(".header").load("templates/header.html");
+    $(".main").load("templates/main.html");
+    $(".footer").load("templates/footer.html");
+});
+
+// đi đến trang chủ
+function viewHome() {
+    $(".main").load("templates/main.html");
+}
+
+function viewDeparment() {
+    $(".main").load("department/main.html", function() {
+        initTable();
+    });
+}
+
+function viewAccount() {
+    $(".main").load("account/main.html", function() {});
+}
+
+
+//khởi tạo dữ liệu cho bảng
+function Employee(id, name, department, phone) {
+    this.id = id;
+    this.name = name;
+    this.department = department;
+    this.phone = phone;
+}
+
+
+
+//khởi tạo danh sách cho bảng department
+function initTable() {
+    $('tbody').empty();
+    $.ajax({
+        url: apiDepartmentURL,
+        type: 'GET',
+        success: function(result) {
+            result.forEach(function(item) {
+                $('tbody').append(
+                    '<tr>' +
+                    '<td>' + item.departmentID + '</td>' +
+                    '<td>' + item.departmentName + '</td>' +
+                    '<td>' +
+                    '<a class="edit" title="Edit" data-toggle="tooltip" onclick ="opendUpdateModal(' + item.departmentID + ')"><i class="material-icons">&#xE254;</i></a>' +
+                    '<a class="delete" title="Delete" data-toggle="tooltip" onclick ="deleteEmployee(' + item.departmentName + ')"><i class="material-icons">&#xE872;</i></a>' +
+                    '</td>' +
+                    '</tr>'
+                )
+            });
+        }
+    });
+}
+
+function openAddNewModal() {
+    $("#myModal").modal("show");
+    reset();
+    initDapartmentList();
+}
+
+function initDapartmentList() {
+    $('#department-select').empty();
+    $.ajax({
+        url: apiDepartmentURL,
+        type: 'GET',
+        success: function(result) {
+            result.forEach(function(item) {
+                $('#department-select').append(
+                    '<option value="' + item.departmentID + '">' + item.departmentName + '</option>'
+                )
+            });
+        }
+    });
+
+}
+
+function hideAddNewModal() {
+    $("#myModal").modal("hide");
+}
+
+function createNewDepartment() {
+    var name = document.getElementById("department-name").value;
+
+    var department = {
+            departmentName: name
+        }
+        // gọi api thêm mới nhân viên
+    $.ajax({
+        url: apiDepartmentURL,
+        type: 'POST',
+        data: JSON.stringify(department), // body
+        contentType: "application/json",
+        async: false,
+        success: function(result) {}
+    });
+
+    initTable();
+    hideAddNewModal();
+}
+
+function opendUpdateModal(departmentID) {
+    openAddNewModal();
+    // gọi api lấy phòng ban theo id
+    $.ajax({
+        url: apiDepartmentURL + departmentID,
+        type: 'GET',
+        success: function(result) {
+            //fill data
+            document.getElementById("department-id").value = result.departmentID;
+            document.getElementById("department-name").value = result.departmentName;
+        }
+    });
+}
+
+
+function reset() {
+    document.getElementById("department-id").value = "";
+    document.getElementById("department-name").value = "";
+}
+
+
+function updateDepartment(departmentId) {
+    var name = document.getElementById("department-name").value;
+
+    var department = {
+            departmentName: name
+        }
+        // gọi api để cập nhật phòng ban theo id
+    $.ajax({
+        url: apiDepartmentURL + departmentId,
+        type: 'PUT',
+        data: JSON.stringify(department), // body
+        contentType: "application/json",
+        async: false,
+        success: function(result) {
+
+        }
+    });
+    initTable();
+    hideAddNewModal();
+}
+
+function saveDepartment() {
+    var departmentID = document.getElementById("department-id").value;
+
+    if (departmentID == null || departmentID == "") {
+        createNewDepartment();
+    } else {
+        updateDepartment(departmentID);
+    }
+    showAlertSuccess();
+}
+
+function deleteEmployee(departmentId) {
+    var result = confirm("có chắc chắn xóa không?");
+    if (result == true) {
+        $.ajax({
+            url: apiDepartmentURL + departmentId,
+            type: 'DELETE',
+            async: false,
+            success: function(result) {
+
+            }
+        });
+
+        initTable();
+        showAlertSuccess();
+    }
+}
+
+
+function showAlertSuccess() {
+    $("#alert-success").fadeTo(3000, 200).slideUp(2000, function() {
+        $("#alert-success").slideUp(3000);
+    });
+}

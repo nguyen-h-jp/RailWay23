@@ -1,0 +1,64 @@
+<div class="container-lg">
+
+
+    <div>Đây là trang quản lý phòng ban</div>
+    <div class="alert alert-success alert-dismissible" id="alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Thành công!</strong>.
+    </div>
+
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Danh sách <b>Phòng ban</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-info add-new" onclick="openAddNewDepartmentModal()"><i class="fa fa-plus"></i> Add New</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Phòng ban</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận</h5>
+                <button type="button" class="close" aria-label="Close" onclick="hideAddNewModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="department-id" name="department-id">
+
+                <label for="department-name"><b>Tên Phòng ban</b></label>
+                <input type="text" placeholder="Nhập tên Phòng ban" name="department-name" id="department-name" required>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="hideAddNewModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveDepartment()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
