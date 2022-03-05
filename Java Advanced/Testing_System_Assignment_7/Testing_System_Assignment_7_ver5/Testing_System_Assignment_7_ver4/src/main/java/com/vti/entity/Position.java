@@ -14,8 +14,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "`position`")
+@Getter
+@Setter
 public class Position implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,31 +45,31 @@ public class Position implements Serializable {
 	}
 
 
-	public int getPositionID() {
-		return positionID;
-	}
-
-	public void setPositionID(int positionID) {
-		this.positionID = positionID;
-	}
-
-	public PositionName getPositionName() {
-		return positionName;
-	}
-
-	public void setPositionName(PositionName positionName) {
-		this.positionName = positionName;
-	}
-	
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
+//	public int getPositionID() {
+//		return positionID;
+//	}
+//
+//	public void setPositionID(int positionID) {
+//		this.positionID = positionID;
+//	}
+//
+//	public PositionName getPositionName() {
+//		return positionName;
+//	}
+//
+//	public void setPositionName(PositionName positionName) {
+//		this.positionName = positionName;
+//	}
+//	
+//
+//	public List<Account> getAccounts() {
+//		return accounts;
+//	}
+//
+//
+//	public void setAccounts(List<Account> accounts) {
+//		this.accounts = accounts;
+//	}
 
 
 	@Override

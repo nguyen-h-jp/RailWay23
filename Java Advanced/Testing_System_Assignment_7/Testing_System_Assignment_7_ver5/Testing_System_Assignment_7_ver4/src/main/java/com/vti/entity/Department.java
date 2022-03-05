@@ -18,10 +18,15 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "department")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "departmentID")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
 public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,30 +43,30 @@ public class Department implements Serializable {
 	@JsonIgnoreProperties("department")
 	private List<Account> accounts;
 
-	public int getDepartmentID() {
-		return departmentID;
-	}
-
-	public void setDepartmentID(int departmentID) {
-		this.departmentID = departmentID;
-	}
-
-	public String getDepartmentName() {
-		return departmentName;
-	}
-
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
-
-	
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> account) {
-		this.accounts = account;
-	}
+//	public int getDepartmentID() {
+//		return departmentID;
+//	}
+//
+//	public void setDepartmentID(int departmentID) {
+//		this.departmentID = departmentID;
+//	}
+//
+//	public String getDepartmentName() {
+//		return departmentName;
+//	}
+//
+//	public void setDepartmentName(String departmentName) {
+//		this.departmentName = departmentName;
+//	}
+//
+//	
+//	public List<Account> getAccounts() {
+//		return accounts;
+//	}
+//
+//	public void setAccounts(List<Account> account) {
+//		this.accounts = account;
+//	}
 
 	@Override
 	public String toString() {

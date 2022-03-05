@@ -17,8 +17,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "address")
+@Getter
+@Setter
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -43,29 +48,29 @@ public class Address implements Serializable {
 		this.addressName = addressName;
 	}
 
-	public int getAddressID() {
-		return addressID;
-	}
-
-	public void setAddressID(int addressID) {
-		this.addressID = addressID;
-	}
-
-	public String getAddressName() {
-		return addressName;
-	}
-
-	public void setAddressName(String addressName) {
-		this.addressName = addressName;
-	}
-
-	public List<DetailDepartment> getDetailDepartments() {
-		return detailDepartments;
-	}
-
-	public void setDetailDepartments(List<DetailDepartment> detailDepartments) {
-		this.detailDepartments = detailDepartments;
-	}
+//	public int getAddressID() {
+//		return addressID;
+//	}
+//
+//	public void setAddressID(int addressID) {
+//		this.addressID = addressID;
+//	}
+//
+//	public String getAddressName() {
+//		return addressName;
+//	}
+//
+//	public void setAddressName(String addressName) {
+//		this.addressName = addressName;
+//	}
+//
+//	public List<DetailDepartment> getDetailDepartments() {
+//		return detailDepartments;
+//	}
+//
+//	public void setDetailDepartments(List<DetailDepartment> detailDepartments) {
+//		this.detailDepartments = detailDepartments;
+//	}
 
 	@Override
 	public String toString() {

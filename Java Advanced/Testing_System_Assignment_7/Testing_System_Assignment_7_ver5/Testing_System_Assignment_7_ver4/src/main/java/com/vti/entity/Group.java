@@ -20,8 +20,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "`group`")
+@Getter
+@Setter
 public class Group implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -50,45 +55,45 @@ public class Group implements Serializable {
 	public Group() {
 	}
 
-	public short getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(short groupId) {
-		this.groupId = groupId;
-	}
-
-	public String getGroupName() {
-		return groupName;
-	}
-
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
-
-	public List<GroupAccount> getGroupAccounts() {
-		return groupAccounts;
-	}
-
-	public void setGroupAccounts(List<GroupAccount> groupAccounts) {
-		this.groupAccounts = groupAccounts;
-	}
+//	public short getGroupId() {
+//		return groupId;
+//	}
+//
+//	public void setGroupId(short groupId) {
+//		this.groupId = groupId;
+//	}
+//
+//	public String getGroupName() {
+//		return groupName;
+//	}
+//
+//	public void setGroupName(String groupName) {
+//		this.groupName = groupName;
+//	}
+//
+//	public Date getCreateDate() {
+//		return createDate;
+//	}
+//
+//	public void setCreateDate(Date createDate) {
+//		this.createDate = createDate;
+//	}
+//
+//	public Account getAccount() {
+//		return account;
+//	}
+//
+//	public void setAccount(Account account) {
+//		this.account = account;
+//	}
+//
+//	public List<GroupAccount> getGroupAccounts() {
+//		return groupAccounts;
+//	}
+//
+//	public void setGroupAccounts(List<GroupAccount> groupAccounts) {
+//		this.groupAccounts = groupAccounts;
+//	}
 
 	@Override
 	public String toString() {

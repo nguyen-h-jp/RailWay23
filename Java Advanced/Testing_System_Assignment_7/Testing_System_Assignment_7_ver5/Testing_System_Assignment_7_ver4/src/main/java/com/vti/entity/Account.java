@@ -27,10 +27,15 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "account")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "accountID")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Getter
+@Setter
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -84,93 +89,93 @@ public class Account implements Serializable {
 	public Account() {
 	}
 
-	public int getAccountID() {
-		return accountID;
-	}
-
-	public void setAccountID(int accountID) {
-		this.accountID = accountID;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
-	public Position getPosition() {
-		return position;
-	}
-
-	public void setPosition(Position position) {
-		this.position = position;
-	}
-
-	public Salary getSalary() {
-		return salary;
-	}
-
-	public void setSalary(Salary salary) {
-		this.salary = salary;
-	}
-
-	public List<Group> getGroups() {
-		return groups;
-	}
-
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
-
-	public List<GroupAccount> getGroupAccounts() {
-		return groupAccounts;
-	}
-
-	public void setGroupAccounts(List<GroupAccount> groupAccounts) {
-		this.groupAccounts = groupAccounts;
-	}
+//	public int getAccountID() {
+//		return accountID;
+//	}
+//
+//	public void setAccountID(int accountID) {
+//		this.accountID = accountID;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+//
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
+//
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
+//
+//	public Date getCreateDate() {
+//		return createDate;
+//	}
+//
+//	public void setCreateDate(Date createDate) {
+//		this.createDate = createDate;
+//	}
+//
+//	public Department getDepartment() {
+//		return department;
+//	}
+//
+//	public void setDepartment(Department department) {
+//		this.department = department;
+//	}
+//
+//	public Position getPosition() {
+//		return position;
+//	}
+//
+//	public void setPosition(Position position) {
+//		this.position = position;
+//	}
+//
+//	public Salary getSalary() {
+//		return salary;
+//	}
+//
+//	public void setSalary(Salary salary) {
+//		this.salary = salary;
+//	}
+//
+//	public List<Group> getGroups() {
+//		return groups;
+//	}
+//
+//	public void setGroups(List<Group> groups) {
+//		this.groups = groups;
+//	}
+//
+//	public List<GroupAccount> getGroupAccounts() {
+//		return groupAccounts;
+//	}
+//
+//	public void setGroupAccounts(List<GroupAccount> groupAccounts) {
+//		this.groupAccounts = groupAccounts;
+//	}
 
 	@Override
 	public String toString() {

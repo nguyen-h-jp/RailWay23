@@ -17,6 +17,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "`group_account`")
+
 public class GroupAccount implements Serializable {
 
 	private static final long serialVersionUID = 1L;

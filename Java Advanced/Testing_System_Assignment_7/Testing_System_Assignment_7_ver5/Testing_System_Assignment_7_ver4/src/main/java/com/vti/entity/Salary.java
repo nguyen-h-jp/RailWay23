@@ -14,8 +14,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "salary")
+@Getter
+@Setter
 public class Salary implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -36,31 +41,31 @@ public class Salary implements Serializable {
 	public Salary() {
 	}
 
-	public int getSalaryID() {
-		return salaryID;
-	}
-
-	public void setSalaryID(int salaryID) {
-		this.salaryID = salaryID;
-	}
-
-	public SalaryName getSalaryName() {
-		return salaryName;
-	}
-
-	public void setSalaryName(SalaryName salaryName) {
-		this.salaryName = salaryName;
-	}
-
-	
-
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
+//	public int getSalaryID() {
+//		return salaryID;
+//	}
+//
+//	public void setSalaryID(int salaryID) {
+//		this.salaryID = salaryID;
+//	}
+//
+//	public SalaryName getSalaryName() {
+//		return salaryName;
+//	}
+//
+//	public void setSalaryName(SalaryName salaryName) {
+//		this.salaryName = salaryName;
+//	}
+//
+//	
+//
+//	public List<Account> getAccounts() {
+//		return accounts;
+//	}
+//
+//	public void setAccounts(List<Account> accounts) {
+//		this.accounts = accounts;
+//	}
 
 	@Override
 	public String toString() {
