@@ -10,6 +10,8 @@ public interface IDepartmentService {
 	public Page<Department> getAllDepartments(Pageable pagable);
 	
 	public Department findByDepartmentName(String name);
+	
+	public Department getDepartmentByID(Integer id);
 
 //	public Department getDepartmentByID(Integer id);
 //

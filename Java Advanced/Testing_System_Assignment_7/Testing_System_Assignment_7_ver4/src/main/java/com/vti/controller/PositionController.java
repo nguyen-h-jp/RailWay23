@@ -13,40 +13,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vti.entity.Department;
-import com.vti.service.IDepartmentService;
+import com.vti.entity.Position;
+import com.vti.service.IPositionService;
 
 @RestController
-@RequestMapping(value = "api/v1/departments")
-public class DepartmentController {
+@RequestMapping(value = "api/v1/positions")
+public class PositionController {
 
 	@Autowired
-	private IDepartmentService service;
+	private IPositionService service;
 
 	@GetMapping()
-	public Page<Department> getAllDepartments(Pageable pagable) {
-		return service.getAllDepartments(pagable);
+	public Page<Position> getAllPositions(Pageable pagable) {
+		return service.getAllPositions(pagable);
 	}
 	
 	@GetMapping(value = "/")
-	public Department findByDepartmentName(@RequestParam(name = "name") String name) {
-		return service.findByDepartmentName(name);
+	public Position findByPositionName(@RequestParam(name = "name") String name) {
+		return service.findByPositionName(name);
+	}
+	
+	@GetMapping(value = "/{id}")
+	public Position getPositionByID(@PathVariable(name = "id") Integer id) {
+		return service.getPositionByID(id);
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public void deleteDepartment(@PathVariable(name = "id") int id) {
-		service.deleteDepartment(id);
+	public void deletePosition(@PathVariable(name = "id") int id) {
+		service.deletePosition(id);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public void updateDepartment(@PathVariable(name = "id") int id, @RequestBody Department department) {
-		department.setDepartmentID(id);
-		service.updateDepartment(department);
+	public void updatePosition(@PathVariable(name = "id") int id, @RequestBody Position position) {
+		position.setPositionID(id);
+		service.updatePosition(position);
 	}
 	
 	@PostMapping()
-	public void createDepartment(@RequestBody Department department) {
-		service.createDepartment(department);
+	public void createPosition(@RequestBody Position position) {
+		service.createPosition(position);
 	}
 	
 

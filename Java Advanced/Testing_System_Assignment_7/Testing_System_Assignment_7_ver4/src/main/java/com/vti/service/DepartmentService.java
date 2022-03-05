@@ -6,7 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.vti.entity.Department;
+import com.vti.entity.DetailDepartment;
 import com.vti.repository.IDepartmentRepository;
+import com.vti.repository.IDetailDepartmentRepository;
 
 @Service
 public class DepartmentService implements IDepartmentService {
@@ -23,10 +25,10 @@ public class DepartmentService implements IDepartmentService {
 		return repository.findByDepartmentName(name);
 	}
 
-//	public Department getDepartmentByID(Integer id) {
-//		// TODO Auto-generated method stub
-//		return repository.findById(id).get();
-//	}
+	public Department getDepartmentByID(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();
+	}
 //	
 //	public Department getDepartmentByName(String name) {
 //		// TODO Auto-generated method stub
@@ -60,6 +62,7 @@ public class DepartmentService implements IDepartmentService {
 //		// TODO Auto-generated method stub
 //		return repository.existsByDepartmentName(name);
 //	}
+
 
 
 	
